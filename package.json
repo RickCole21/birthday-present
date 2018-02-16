@@ -1,0 +1,23 @@
+{
+  "name": "birthday-present",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RickCole21/birthday-present.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RickCole21/birthday-present/issues"
+  },
+  "homepage": "https://github.com/RickCole21/birthday-present#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
