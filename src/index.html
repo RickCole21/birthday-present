@@ -16,6 +16,26 @@
   </style>
 </head>
 <body>
+<audio autoplay loop id="bgm">
+  <source src="happyBirthdayToMe.mp3" type="audio/mpeg">
+  <!--<source src="horse.ogg" type="audio/ogg">-->
+  <embed height="50" width="100" src="happyBirthdayToMe.mp3">
+</audio>
+<script type="javascript">
+  function audioAutoPlay(id) {
+    var audio = document.getElementById(id);
+    audio.play();
+    document.addEventListener("WeixinJSBridgeReady", function () {
+      audio.play();
+    }, false);
+    document.addEventListener('YixinJSBridgeReady', function () {
+      audio.play();
+    }, false);
+  }
+
+  audioAutoPlay('bgm');//xxx是你audio标签的id
+</script>
+
 <canvas></canvas>
 
 <script type="text/javascript" src="script.js"></script>

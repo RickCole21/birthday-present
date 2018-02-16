@@ -46,7 +46,23 @@ newFireball = (function () {
   };
 })();
 
-// 鼠标按下
+mouse = {x: 0, y: 0, d: 0};
+onmousemove = function (e) {
+  mouse.x = e.clientX - o.x;
+  mouse.y = e.clientY - o.y;
+  var dx = mouse.x - pos1.x,
+    dy = mouse.y - pos1.y;
+  mouse.d = Math.sqrt(dx * dx + dy * dy);
+};
+
+// ontouchmove = function (e) {
+//   mouse.x = e.clientX - o.x;
+//   mouse.y = e.clientY - o.y;
+//   var dx = mouse.x - pos1.x,
+//     dy = mouse.y - pos1.y;
+//   mouse.d = Math.sqrt(dx * dx + dy * dy);
+// };
+
 charging = false;
 pos1 = {x: 0, y: 0};
 showInstructions = true;
@@ -57,38 +73,13 @@ onmousedown = function (e) {
   showInstructions = false;
 };
 
-ontouchstart = function (e) {
-  mouse.x = e.changedTouches[0].clientX - o.x;
-  mouse.y = e.changedTouches[0].clientY - o.y;
-  var dx = mouse.x - pos1.x,
-    dy = mouse.y - pos1.y;
-  mouse.d = Math.sqrt(dx * dx + dy * dy);
+// ontouchstart = function (e) {
+//   pos1.x = mouse.x;
+//   pos1.y = mouse.y;
+//   charging = true;
+//   showInstructions = false;
+// }
 
-  pos1.x = mouse.x;
-  pos1.y = mouse.y;
-  charging = true;
-  showInstructions = false;
-}
-
-// 鼠标移动
-mouse = {x: 0, y: 0, d: 0};
-onmousemove = function (e) {
-  mouse.x = e.clientX - o.x;
-  mouse.y = e.clientY - o.y;
-  var dx = mouse.x - pos1.x,
-    dy = mouse.y - pos1.y;
-  mouse.d = Math.sqrt(dx * dx + dy * dy);
-};
-
-ontouchmove = function (e) {
-  mouse.x = e.changedTouches[0].clientX - o.x;
-  mouse.y = e.changedTouches[0].clientY - o.y;
-  var dx = mouse.x - pos1.x,
-    dy = mouse.y - pos1.y;
-  mouse.d = Math.sqrt(dx * dx + dy * dy);
-};
-
-// 鼠标抬起
 onmouseup = function () {
   if (charging) {
     newFireball(
@@ -102,18 +93,18 @@ onmouseup = function () {
   }
 };
 
-ontouchend = function (e) {
-  if (charging) {
-    newFireball(
-      mouse.x,
-      mouse.y,
-      (pos1.x - mouse.x) * 0.03,
-      (pos1.y - mouse.y) * 0.03,
-      600
-    );
-    charging = false;
-  }
-}
+// ontouchend = function (e) {
+//   if (charging) {
+//     newFireball(
+//       mouse.x,
+//       mouse.y,
+//       (pos1.x - mouse.x) * 0.03,
+//       (pos1.y - mouse.y) * 0.03,
+//       600
+//     );
+//     charging = false;
+//   }
+// }
 
 time = 0;
 requestAnimationFrame(loop = function () {
